@@ -1,0 +1,8 @@
+development: &default
+ score: 0
+
+test:
+ <<: *default
+
+production:
+ <<: *default

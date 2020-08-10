@@ -12,11 +12,12 @@ class GamesController < ApplicationController
     @letters = params[:letters]
 
     if in_the_grid?(word, @letters) == false
-      @result = "Sorry but #{word} can't be build out of #{@letters}"
+      @result = "Sorry but #{word} can't be build out of #{@letters}. Your current score is #{SCORE_CONFIG["score"]}."
     elsif english_word?(word) == false
-      @result = "Sorry but #{word} does not seem to be a valid English word..."
+      @result = "Sorry but #{word} does not seem to be a valid English word. Your current score is #{SCORE_CONFIG["score"]}."
     else
-      @result = "Congratulations! #{word} is a valid English word!"
+      SCORE_CONFIG["score"] += word.length
+      @result = "Congratulations! #{word} is a valid English word! You current score is #{SCORE_CONFIG["score"]}."
     end
   end
 
